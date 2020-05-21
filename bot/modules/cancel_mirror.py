@@ -32,7 +32,7 @@ def cancel_mirror(update,context):
         if mirror_message is None or mirror_message.message_id not in keys:
             if BotCommands.MirrorCommand in mirror_message.text or \
                     BotCommands.TarMirrorCommand in mirror_message.text:
-                msg = "Mirror already have been cancelled"
+                msg = "Mirror already have been ❌cancelled"
                 sendMessage(msg,context.bot,update)
                 return
             else:
@@ -40,10 +40,10 @@ def cancel_mirror(update,context):
                 sendMessage(msg,context.bot,update)
                 return
     if dl.status() == "Uploading":
-        sendMessage("Upload in Progress, Don't Cancel it.", context.bot, update)
+        sendMessage("📤Upload in Progress, Don't Cancel it.", context.bot, update)
         return
     elif dl.status() == "Archiving":
-        sendMessage("Archival in Progress, Don't Cancel it.", context.bot, update)
+        sendMessage("🗂Archival in Progress, Don't Cancel it.", context.bot, update)
         return
     else:
         dl.download().cancel_download()
