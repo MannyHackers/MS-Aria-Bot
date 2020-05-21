@@ -40,12 +40,12 @@ class AriaDownloadHelper(DownloadHelper):
     def __onDownloadPause(self, api, gid):
         if self.gid == gid:
             LOGGER.info("Called onDownloadPause")
-            self.__listener.onDownloadError('Download stopped by user!')
+            self.__listener.onDownloadError('Download stopped by 👤User!')
 
     def __onDownloadStopped(self, api, gid):
         if self.gid == gid:
             LOGGER.info("Called on_download_stop")
-            self.__listener.onDownloadError('Download stopped by user!')
+            self.__listener.onDownloadError('Download stopped by 👤User!')
 
     def __onDownloadError(self, api, gid):
         with self._resource_lock:
@@ -77,7 +77,7 @@ class AriaDownloadHelper(DownloadHelper):
         download = aria2.get_download(self.gid)
         if download.is_waiting:
             aria2.remove([download])
-            self.__listener.onDownloadError("Cancelled by user")
+            self.__listener.onDownloadError("Cancelled by 👤User")
             return
         if len(download.followed_by_ids) != 0:
             downloads = aria2.get_downloads(download.followed_by_ids)
