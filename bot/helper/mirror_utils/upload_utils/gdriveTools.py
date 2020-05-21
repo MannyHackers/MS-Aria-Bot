@@ -421,13 +421,13 @@ class GoogleDriveHelper:
         for file in response.get('files', []):
             if file.get(
                     'mimeType') == "application/vnd.google-apps.folder":  # Detect Whether Current Entity is a Folder or File.
-                msg += f"⁍ <a href='https://drive.google.com/drive/folders/{file.get('id')}'>{file.get('name')}" \
+                msg += f"🗂 <a href='https://drive.google.com/drive/folders/{file.get('id')}'>{file.get('name')}" \
                        f"</a> (folder)"
                 if INDEX_URL is not None:
                     url = requests.utils.requote_uri(f'{INDEX_URL}/{file.get("name")}/')
                     msg += f' | <a href="{url}"> Index URL</a>'
             else:
-                msg += f"⁍ <a href='https://drive.google.com/uc?id={file.get('id')}" \
+                msg += f"📂 <a href='https://drive.google.com/uc?id={file.get('id')}" \
                        f"&export=download'>{file.get('name')}</a> ({get_readable_file_size(int(file.get('size')))})"
                 if INDEX_URL is not None:
                     url = requests.utils.requote_uri(f'{INDEX_URL}/{file.get("name")}')
